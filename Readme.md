@@ -28,6 +28,34 @@ pulumi stack rm dev // remove stack dev
 
 pip install pulumi_docker //
 
+//setup local kubernities cluster
+install kubectl
+kubectl version --client
+
+//kubernetes using mini kube locally
+intall minikube
+//setup kubertes cluster locally
+minikube start
+
+
+//new project kubernetes with pyhton, first create on pulumi dashboard
+mkdir projectN-kubernetes-python && cd projectN-kubernetes-python //dir 
+
+pulumi new kubernetes-python -s bobuser/projectN-kubernetes-python/dev  //pull down your project
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
