@@ -70,20 +70,48 @@ pulumi.export('bucketname', bucket.id)
 
 //end
 
+pip install aws_cli
+aws configure // configure values
+
+
+//configuring access to create EKS cluster
+
+add additional permission to group -> amazonec2fullaccess ->IAMfullaccess -> amazonec2containerregisteryfullaccess -> awscloudformation
+
+add permissions -> create inline policy -> Json 
+{
+     version:
+     statement:[
+     {
+       effect: Allow,
+       Action: ["eks*"],
+       Resource:"*"
+       }
+      ]
+ } 
 
 
 
+//setup new stack loony-eks
+
+pulumi stack init loony-eks
+
+https://github.com/pulumi/examples/tree/master/aws-py-eks
 
 
+pulumi stack output // output cluster
 
+aws eks --region us-east-2 update-kubeconfig --name $(pulumi stack output cluster-name)// update kube contarol to access this kubernetes cluster on aws
 
+kubectl get nodes
 
+///////////////////////// <3
+pulumi destroy --yes
+pulumi stack rm stackName
+
+pulumi stack select stackName
+pulumi destroy --yes
 
  
-
-
-
-
-
 
 
