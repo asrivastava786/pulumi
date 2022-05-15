@@ -43,6 +43,33 @@ mkdir projectN-kubernetes-python && cd projectN-kubernetes-python //dir
 
 pulumi new kubernetes-python -s bobuser/projectN-kubernetes-python/dev  //pull down your project
 
+kubectl get all //all running service 
+
+kubectl port-forward service/service name 8080:80 //port forward to 8080
+
+
+//setting up static website on AWS
+
+//cmd locally to assign cred locally//
+nano ~/.bash_profile
+export AWS_ACCESS_KEY = ''
+export AWS_SECRET_ACCESS_KEY = ''
+
+ mkdir projectname && cd projectname
+ pulumi new aws-python
+
+//_main_.py codes
+ 
+imort pulumi
+from pulumi_aws import s3
+
+#create an aws serouce bucket
+bucket = s3.Bucket('projectName')
+
+pulumi.export('bucketname', bucket.id)
+
+//end
+
 
 
 
